@@ -23,6 +23,3 @@ function stopChangeBagroundColor() {
   buttonStop.setAttribute('disabled', true);
   buttonStart.removeAttribute('disabled');
 }
-
-buttonStart.classList.add('button');
-buttonStop.classList.add('button');
