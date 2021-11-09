@@ -12,9 +12,9 @@ buttonStart.addEventListener('click', startChangeBagroundColor);
 buttonStop.addEventListener('click', stopChangeBagroundColor);
 
 function startChangeBagroundColor() {
+  buttonStart.setAttribute('disabled', true);
   timerId = setInterval(() => {
     document.body.style.backgroundColor = getRandomHexColor();
-    buttonStart.setAttribute('disabled', true);
     buttonStop.removeAttribute('disabled');
   }, 1000);
 }
