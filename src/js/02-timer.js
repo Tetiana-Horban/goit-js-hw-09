@@ -18,21 +18,20 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
+
   onClose(selectedDates) {
     startDate = selectedDates[0];
     if (new Date() > startDate) {
       return Notiflix.Notify.failure('Please choose a date in the future');
     }
     buttonStart.removeAttribute('disabled');
+    buttonStart.addEventListener('click', startTimer);
   },
 };
 
-flatpickr(inputEl, options);
-buttonStart.addEventListener('click', flatpickr);
-buttonStart.addEventListener('click', startTimer);
-
 function startTimer() {
   buttonStart.setAttribute('disabled', true);
+  document.querySelector('.flatpickr-mobile').setAttribute('disabled', true);
   let intervalId = setInterval(() => {
     const currentDate = Date.now();
     const deltaDate = startDate - currentDate;
@@ -44,6 +43,8 @@ function startTimer() {
     }
   }, 1000);
 }
+
+flatpickr(inputEl, options);
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
